@@ -7,7 +7,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      todos: [],
+      todos: [...JSON.parse(window.localStorage.getItem("todos"))],
       description: ""
     };
   }
@@ -27,6 +27,11 @@ class App extends Component {
     this.setState({
       todos: [...this.state.todos, newTodo]
     });
+
+    window.localStorage.setItem(
+      "todos",
+      JSON.stringify([...this.state.todos, newTodo])
+    );
   };
 
   toggleComplete = id => {
@@ -40,6 +45,8 @@ class App extends Component {
     });
 
     this.setState({ todos: updatedTodos });
+
+    window.localStorage.setItem("todos", JSON.stringify(updatedTodos));
   };
 
   removeCompleted = e => {
@@ -50,6 +57,8 @@ class App extends Component {
     );
 
     this.setState({ todos: updatedTodos });
+
+    window.localStorage.setItem("todos", JSON.stringify(updatedTodos));
   };
 
   render() {
