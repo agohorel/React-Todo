@@ -10,7 +10,7 @@ export const TodoForm = ({
 }) => {
   return (
     <Form>
-      <label htmlFor="input">Enter a new todo:</label>
+      <label htmlFor="input">enter a new todo:</label>
       <input
         type="text"
         id="input"

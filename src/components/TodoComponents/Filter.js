@@ -5,7 +5,7 @@ import { Form } from "../../styles/form";
 export const Filter = ({ filterTerm, updateFilterTerm }) => {
   return (
     <Form>
-      <label htmlFor="search">Filter Todos:</label>
+      <label htmlFor="search">filter todos:</label>
       <input
         type="text"
         id="search"

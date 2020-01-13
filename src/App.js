@@ -118,7 +118,7 @@ class App extends Component {
     return (
       <Container>
         <GlobalStyle></GlobalStyle>
-        <h2>do your work.</h2>
+        <h1>do your work.</h1>
         <TodoForm
           description={this.state.description}
           updateDescription={this.updateDescription}
@@ -147,7 +147,7 @@ const Container = styled.main`
   min-height: 100vh;
   align-items: center;
 
-  h2:nth-child(1) {
+  h1 {
     margin-top: 2rem;
   }
 

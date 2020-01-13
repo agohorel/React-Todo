@@ -17,6 +17,8 @@ export const Form = styled.form`
     background-color: #9c9c9c;
     color: #1c1c1c;
     padding: 0.25rem;
+    font-family: "Roboto", sans-serif;
+    width: 50%;
   }
 
   button {
