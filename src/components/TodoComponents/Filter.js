@@ -1,8 +1,10 @@
 import React from "react";
 
+import { Form } from "../../styles/form";
+
 export const Filter = ({ filterTerm, updateFilterTerm }) => {
   return (
-    <form>
+    <Form>
       <label htmlFor="search">Filter Todos:</label>
       <input
         type="text"
@@ -11,6 +13,6 @@ export const Filter = ({ filterTerm, updateFilterTerm }) => {
         onChange={e => updateFilterTerm(e.target.value)}
         value={filterTerm}
       />
-    </form>
+    </Form>
   );
 };

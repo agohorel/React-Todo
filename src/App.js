@@ -1,8 +1,11 @@
 import React, { Component } from "react";
+import styled from "styled-components";
 
 import { TodoForm } from "./components/TodoComponents/TodoForm";
 import { TodoList } from "./components/TodoComponents/TodoList";
 import { Filter } from "./components/TodoComponents/Filter";
+
+import GlobalStyle from "./styles/global";
 
 class App extends Component {
   constructor() {
@@ -31,7 +34,7 @@ class App extends Component {
 
   updateFilterTerm = input => {
     this.setState({ filterTerm: input }, () => {
-      // below code is in callback because setState is async! 
+      // below code is in callback because setState is async!
       // without this my filter values will always be "one step behind"
       const newfilteredTodos = this.state.todos.filter(todo =>
         todo.task.includes(this.state.filterTerm)
@@ -43,7 +46,7 @@ class App extends Component {
 
   addTodo = (e, description) => {
     e.preventDefault();
-    
+
     const newTodo = {
       task: description,
       id: Date.now(),
@@ -96,28 +99,47 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <h2>Welcome to your Todo App!</h2>
-
+      <Container>
+        <GlobalStyle></GlobalStyle>
+        <h2>do your work.</h2>
         <TodoForm
           description={this.state.description}
           updateDescription={this.updateDescription}
           addTodo={this.addTodo}
           removeCompleted={this.removeCompleted}
         ></TodoForm>
-
         <Filter
           filterTerm={this.state.filterTerm}
           updateFilterTerm={this.updateFilterTerm}
         ></Filter>
-
         <TodoList
           todos={this.state.filteredTodos}
           toggleComplete={this.toggleComplete}
         ></TodoList>
-      </div>
+      </Container>
     );
   }
 }
 
 export default App;
+
+const Container = styled.main`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  align-items: center;
+
+  h2:nth-child(1) {
+    margin-top: 2rem;
+  }
+
+  background-image: linear-gradient(
+      to bottom right,
+      rgba(0, 0, 0, 0.8),
+      rgba(255, 255, 255, 0.8)
+    ),
+    url("https://images.unsplash.com/photo-1504548840739-580b10ae7715?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80");
+  background-fit: cover;
+  background-position: center;
+`;
