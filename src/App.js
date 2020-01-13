@@ -53,9 +53,19 @@ class App extends Component {
       completed: false
     };
 
-    this.setState({
-      todos: [...this.state.todos, newTodo]
-    });
+    this.setState(
+      {
+        todos: [...this.state.todos, newTodo]
+      },
+      () => {
+        // also update the filteredTodos state so our UI stays in sync
+        this.setState({
+          filteredTodos: this.state.todos.filter(todo =>
+            todo.task.includes(this.state.filterTerm)
+          )
+        });
+      }
+    );
 
     window.localStorage.setItem(
       "todos",
