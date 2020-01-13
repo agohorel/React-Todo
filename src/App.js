@@ -7,9 +7,17 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      todos: [...JSON.parse(window.localStorage.getItem("todos"))],
+      todos: [],
       description: ""
     };
+  }
+
+  componentDidMount() {
+    if (window.localStorage.getItem("todos")) {
+      this.setState({
+        todos: [...JSON.parse(window.localStorage.getItem("todos"))]
+      });
+    }
   }
 
   updateDescription = input => {
