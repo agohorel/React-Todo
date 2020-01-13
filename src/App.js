@@ -30,6 +30,19 @@ class App extends Component {
     });
   };
 
+  toggleComplete = id => {
+    const updatedTodos = this.state.todos.map(todo => {
+      if (todo.id === id) {
+        return {
+          ...todo,
+          completed: !todo.completed
+        };
+      } else return todo;
+    });
+
+    this.setState({ todos: updatedTodos });
+  };
+
   render() {
     return (
       <div>
@@ -39,7 +52,10 @@ class App extends Component {
           updateDescription={this.updateDescription}
           addTodo={this.addTodo}
         ></TodoForm>
-        <TodoList todos={this.state.todos}></TodoList>
+        <TodoList
+          todos={this.state.todos}
+          toggleComplete={this.toggleComplete}
+        ></TodoList>
       </div>
     );
   }

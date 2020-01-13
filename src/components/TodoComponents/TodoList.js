@@ -2,11 +2,11 @@ import React from "react";
 
 import { Todo } from "./Todo";
 
-export const TodoList = ({ todos }) => {
+export const TodoList = ({ todos, toggleComplete }) => {
   return (
     <>
       {todos.map(todo => (
-        <Todo todo={todo}></Todo>
+        <Todo key={todo.id} todo={todo} toggleComplete={toggleComplete}></Todo>
       ))}
     </>
   );
