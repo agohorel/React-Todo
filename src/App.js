@@ -13,7 +13,6 @@ class App extends Component {
   }
 
   updateDescription = input => {
-    console.log(this.state);
     this.setState({ description: input });
   };
 
@@ -43,6 +42,16 @@ class App extends Component {
     this.setState({ todos: updatedTodos });
   };
 
+  removeCompleted = e => {
+    e.preventDefault();
+
+    const updatedTodos = this.state.todos.filter(
+      todo => todo.completed === false
+    );
+
+    this.setState({ todos: updatedTodos });
+  };
+
   render() {
     return (
       <div>
@@ -51,6 +60,7 @@ class App extends Component {
           description={this.state.description}
           updateDescription={this.updateDescription}
           addTodo={this.addTodo}
+          removeCompleted={this.removeCompleted}
         ></TodoForm>
         <TodoList
           todos={this.state.todos}

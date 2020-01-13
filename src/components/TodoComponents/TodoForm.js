@@ -1,6 +1,11 @@
 import React from "react";
 
-export const TodoForm = ({ description, updateDescription, addTodo }) => {
+export const TodoForm = ({
+  description,
+  updateDescription,
+  addTodo,
+  removeCompleted
+}) => {
   return (
     <form>
       <label htmlFor="input">Enter a new todo:</label>
@@ -12,7 +17,7 @@ export const TodoForm = ({ description, updateDescription, addTodo }) => {
         value={description}
       />
       <button onClick={e => addTodo(e, description)}>add</button>
-      <button>clear completed</button>
+      <button onClick={e => removeCompleted(e)}>clear completed</button>
     </form>
   );
 };
