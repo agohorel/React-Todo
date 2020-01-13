@@ -115,6 +115,10 @@ class App extends Component {
   };
 
   render() {
+    const sortedFilteredTodos = this.state.filteredTodos.sort(
+      (a, b) => a.completed - b.completed
+    );
+
     return (
       <Container>
         <GlobalStyle></GlobalStyle>
@@ -130,7 +134,7 @@ class App extends Component {
           updateFilterTerm={this.updateFilterTerm}
         ></Filter>
         <TodoList
-          todos={this.state.filteredTodos}
+          todos={sortedFilteredTodos}
           toggleComplete={this.toggleComplete}
         ></TodoList>
       </Container>
